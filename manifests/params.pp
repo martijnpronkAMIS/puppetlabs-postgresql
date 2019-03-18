@@ -61,15 +61,15 @@ class postgresql::params inherits postgresql::globals {
         $plpython_package_name  = pick($plpython_package_name, "postgresql${package_version}-plpython")
         $service_name           = $::operatingsystem ? {
           'Amazon' => pick($service_name, "postgresql${version_parts[0]}${version_parts[1]}"),
-          default  => pick($service_name, "postgresql-${version}"),
+          default  => pick($service_name, "postgresql-${version_parts[0]}"),
         }
         $bindir                 = $::operatingsystem ? {
           'Amazon' => pick($bindir, '/usr/bin'),
-          default  => pick($bindir, "/usr/pgsql-${version}/bin"),
+          default  => pick($bindir, "/usr/pgsql-${version_parts[0]}/bin"),
         }
         $datadir                = $::operatingsystem ? {
           'Amazon' => pick($datadir, "/var/lib/pgsql${package_version}/data"),
-          default  => pick($datadir, "/var/lib/pgsql/${version}/data"),
+          default  => pick($datadir, "/var/lib/pgsql/${version_parts[0]}/data"),
         }
         $confdir                = pick($confdir, $datadir)
       }
