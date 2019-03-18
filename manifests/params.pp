@@ -32,7 +32,7 @@ class postgresql::params inherits postgresql::globals {
       $group              = pick($group, 'postgres')
       $needs_initdb       = pick($needs_initdb, true)
       $version_parts      = split($version, '[.]')
-      $package_version    = "${version_parts[0]}${version_parts[1]}"
+      $package_version    = "${version_parts[0]}"
 
       if $version == $postgresql::globals::default_version and $::operatingsystem != 'Amazon' {
         $client_package_name    = pick($client_package_name, 'postgresql')
