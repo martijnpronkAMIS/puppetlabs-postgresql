@@ -26,6 +26,9 @@ recovery_target = '<%= @recovery_target %>'
 <% if @recovery_target_timeline -%>
 recovery_target_timeline = '<%= @recovery_target_timeline %>'
 <% end -%>
+<% if @pause_at_recovery_target -%>
+pause_at_recovery_target = <%= @pause_at_recovery_target %>
+<% end -%>
 
 <% if @standby_mode -%>
 standby_mode = <%= @standby_mode %>
